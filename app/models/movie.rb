@@ -1,6 +1,8 @@
 class Movie < ApplicationRecord
-  include AlgoliaSearch
+  validates_presence_of Movie.attribute_names
   
+  include AlgoliaSearch
+
   algoliasearch do
     attributes :title,
                :alternative_titles,
