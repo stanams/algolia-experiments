@@ -20,6 +20,6 @@ class Movie < ApplicationRecord
   end
 
   algoliasearch force_utf8_encoding: true do
-    attributes :alternative_titles
+    attributes :title, :alternative_titles
   end
 end
