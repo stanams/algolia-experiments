@@ -20,8 +20,4 @@ class Movie < ApplicationRecord
     attributesForFaceting [:genre]
     customRanking ['desc(rating)']
   end
-
-  algoliasearch force_utf8_encoding: true do
-    attributes :title, :alternative_titles
-  end
 end
