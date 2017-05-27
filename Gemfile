@@ -27,6 +27,8 @@ group :development do
   gem 'binding_of_caller'
 end
 
+gem 'foreman', '~> 0.82.0'
+
 gem 'algoliasearch-rails'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

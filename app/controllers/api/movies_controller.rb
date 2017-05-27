@@ -1,11 +1,16 @@
-class API::MoviesController < ApplicationController
+class Api::MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      render :show
+      render json: @movie
     else
       render json: @movie.errors.full_messages
     end
+  end
+
+  def index
+    movies = Movie.first(10)
+    render json: movies
   end
 
   def destroy

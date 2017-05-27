@@ -1,0 +1,8 @@
+.btn--semantic-ui {
+  margin-left: 10px !important;
+  border-radius: 30px !important;
+  width: 100px;
+  height: 60px; }
+  .btn--semantic-ui i {
+    font-size: 2em !important;
+    padding-top: 7px !important; }
