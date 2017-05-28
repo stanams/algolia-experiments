@@ -2,8 +2,8 @@ import React from 'react'
 import './AddMovieButton.component.css'
 import { Button, Icon } from 'semantic-ui-react'
 
-export const AddMovieButton = () => (
-    <div>
+export const AddMovieButton = ({openForm}) => (
+    <div onClick={openForm}>
       <Button primary animated className="btn--semantic-ui">
         <Button.Content hidden>Add a movie</Button.Content>
         <Button.Content visible>
