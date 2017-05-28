@@ -7,7 +7,7 @@ import { AddMovieButton } from './Components/AddMovieButton/AddMovieButton.compo
 import { AddMovieForm } from './Components/AddMovieForm/AddMovieForm.component'
 import algoliasearch from 'algoliasearch'
 
-const client = algoliasearch("J2ZJK8FEIS", "399b6ba8d0bf23ef41f3314ca025fa0a");
+const client = algoliasearch('J2ZJK8FEIS', '399b6ba8d0bf23ef41f3314ca025fa0a');
 const index = client.initIndex('Movie');
 
 class App extends Component {
@@ -24,7 +24,6 @@ class App extends Component {
     this.handleInput = this.handleInput.bind(this)
     this.search = this.search.bind(this)
   }
-
 
   handleInput(e) {
     const query = e.target.value

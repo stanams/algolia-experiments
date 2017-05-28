@@ -7,11 +7,12 @@
   .search-bar-input {
     font-size: 30px;
     border: none;
-    border-bottom: 1px #4D4D4D solid;
+    border-bottom: 1px white solid;
     padding: 10px 20px;
     width: 550px;
     text-indent: 20px;
-    color: #4D4D4D; }
+    color: white;
+    background-color: transparent; }
     .search-bar-input::-webkit-input-placeholder {
       color: #d8d8d8;
       font-weight: 100;

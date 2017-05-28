@@ -5,10 +5,11 @@ import './SearchResultsList.component.css'
 export const SearchResultsList = ({ results }) => {
   return (
     <ul className='result-list-container'>
-      { results.hits &&
-        Array.from(results.hits).map(movie => (
-          <SearchResultsListItem key={movie.objectID} movie={movie}/>     
-        ))
+      {
+        results.hits &&
+          Array.from(results.hits).map(movie => (
+            <SearchResultsListItem key={movie.objectID} movie={movie}/>     
+          ))
       }
     </ul>
   )   

@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Header = () => {
   return (
-    <div>
+    <div className='title'>
       Movilia - 
       Search movies at the speed of light
     </div>
