@@ -1,6 +1,5 @@
 import React from 'react'
 import { SearchResultsListItem } from '../SearchResultsListItem/SearchResultsListItem.component'
-import { Accordion } from 'semantic-ui-react'
 import './SearchResultsList.component.css'
 
 const data =
@@ -164,17 +163,12 @@ const data =
   }
 ]
 
-const panels = data.map((movie) => (
-  {
-    title: movie.title,
-    content: <SearchResultsListItem movie={movie}/>
-  })
-)
-
 export const SearchResultsList = () => {
   return (
-    <div>
-      <Accordion panels={ panels } styled className='accordion'/>
-    </div>
+    <ul className='result-list-container'>
+      {data.map(movie => (
+        <SearchResultsListItem key={movie.objectID} movie={movie}/>     
+      ))}
+    </ul>
   )   
 }
