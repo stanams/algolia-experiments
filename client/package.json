@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
+    "algoliasearch": "^3.22.2",
     "classnames": "^2.2.5",
     "node-sass-chokidar": "0.0.1",
     "npm-run-all": "^4.0.2",
