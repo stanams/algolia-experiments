@@ -1,5 +1,5 @@
 class Movie < ApplicationRecord
-  validates_presence_of Movie.attribute_names
+  # validates_presence_of Movie.attribute_names
   
   include AlgoliaSearch
 

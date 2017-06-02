@@ -3,6 +3,7 @@ import { Button, Form } from 'semantic-ui-react'
 import './AddMovieForm.component.css'
 
 export const AddMovieForm = ({closeForm}) => {
+
   return (
     <div className='form__modal'>
       <span className='form__modal--close-btn' onClick={closeForm}>X</span>

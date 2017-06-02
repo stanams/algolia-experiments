@@ -14,6 +14,8 @@ class Api::MoviesController < ApplicationController
   end
 
   def destroy
+    Movie.find(params[:id]).destroy
+    head :ok
   end
 
   private
@@ -22,6 +24,7 @@ class Api::MoviesController < ApplicationController
           .permit(:title,
                   :alternative_titles,
                   :image,
+                  :year,
                   :color,
                   :score,
                   :rating,

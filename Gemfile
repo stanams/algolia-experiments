@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.0.3'
-
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'sqlite3'
 
 gem 'puma', '~> 3.0'
