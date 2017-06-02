@@ -14,8 +14,8 @@ export class AddMovieForm extends React.Component {
       year: '',
       image: '',
       rating: '',
-      actors: [],
-      genre: []
+      actors: '',
+      genre: ''
     }
   }
 
@@ -40,10 +40,10 @@ export class AddMovieForm extends React.Component {
         this.setState({ rating: value })
         break
       case 'actors':
-        this.setState({ actors: [...this.state.actors, value] })
+        this.setState({ actors: value })
         break
       case 'genre':
-        this.setState({ genre: [...this.state.genre, value] })
+        this.setState({ genre: value })
         break
       default:
         return
@@ -108,10 +108,11 @@ export class AddMovieForm extends React.Component {
             </Form.Field>
             <Button className='form__element-btn' type="submit">Submit</Button>
           </Form>
-          <div className='form__modal-movie-preview'>
+          { /*add prview here*/ }
+          {/*<div className='form__modal-movie-preview'>
             <div>Preview</div>
             <SearchResultsListItem movie={ this.state }/>
-          </div>
+          </div>*/}
         </div>
       </div>
     )
