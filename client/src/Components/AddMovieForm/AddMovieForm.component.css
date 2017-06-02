@@ -6,6 +6,8 @@
   position: absolute;
   top: 0;
   left: 0; }
+  .form__modal form {
+    margin-bottom: 30px; }
   .form__modal--close-btn {
     border: gray 1px solid;
     border-radius: 50%;
@@ -24,3 +26,14 @@
     border: 1px grey solid;
     padding: 40px;
     border-radius: 4px; }
+    .form__modal--container .form__element {
+      display: grid;
+      grid-template-columns: 45% 45%;
+      grid-template-rows: 75px;
+      grid-column-gap: 10%; }
+      .form__modal--container .form__element-actors {
+        grid-column-start: 1;
+        grid-column-end: 3; }
+      .form__modal--container .form__element-btn {
+        grid-column-start: 1;
+        grid-column-end: 3; }

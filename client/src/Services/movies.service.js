@@ -10,19 +10,15 @@ export class MoviesService extends AbstractService {
       headers: {
         headers
       },
-      body: JSON.stringify({  
-        "movie": {
+      body: JSON.stringify({
+        movie: {
           "title": movie.title,
           "alternative_titles": movie.alternative_titles,
           "year": movie.year,
           "image": movie.image,
-          "color": movie.color,
-          "score": movie.score,
           "rating": movie.rating,
           "actors": movie.actors,
-          "genre": movie.genre,
-          "actors_facets": movie.actors_facets,
-          "objectID": movie.objectID
+          "genre": movie.genre
           }
         }
       )

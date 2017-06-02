@@ -7,6 +7,9 @@
   top: 0
   left: 0
 
+  form
+    margin-bottom: 30px
+
   &--close-btn
     border: gray 1px solid
     border-radius: 50%
@@ -26,3 +29,20 @@
     border: 1px grey solid
     padding: 40px
     border-radius: 4px
+
+    .form__element
+      display: grid
+      grid-template-columns: 45% 45%
+      grid-template-rows: 75px
+      grid-column-gap: 10%
+
+      &-actors
+        grid-column-start: 1
+        grid-column-end: 3
+
+      &-btn
+        grid-column-start: 1
+        grid-column-end: 3
+
+  &-movie-preview
+    
