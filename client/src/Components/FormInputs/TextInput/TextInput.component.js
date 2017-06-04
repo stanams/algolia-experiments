@@ -1,5 +1,5 @@
 import React from 'react'
-import './TextInput.css'
+import './TextInput.component.css'
 
 export const TextInput = ({ value, onChange, inputType }) => {
   return(

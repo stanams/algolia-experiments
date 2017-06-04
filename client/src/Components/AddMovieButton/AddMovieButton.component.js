@@ -1,6 +1,9 @@
 import React from 'react'
 import './AddMovieButton.component.css'
-import { Button, Icon } from 'semantic-ui-react'
+import {
+  Button,
+  Icon
+} from 'semantic-ui-react'
 
 export const AddMovieButton = ({openForm}) => (
     <div onClick={openForm}>

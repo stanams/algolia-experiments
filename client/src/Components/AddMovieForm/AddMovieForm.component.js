@@ -1,10 +1,17 @@
 import React from 'react'
-import { Button, Rating } from 'semantic-ui-react'
 import './AddMovieForm.component.css'
-import { SearchResultsListItem } from '../SearchResultsListItem/SearchResultsListItem.component'
 import { MoviesService } from '../../Services/movies.service'
-import { SelectInput } from '../FormInputs/SelectInput/SelectInput.component'
-import { TextInput } from '../FormInputs/TextInput/TextInput'
+
+import {
+  Button,
+  Rating
+} from 'semantic-ui-react'
+
+import {
+  SearchResultsListItem,
+  SelectInput,
+  TextInput
+} from '../index.components'
 
 export class AddMovieForm extends React.Component {
 
@@ -65,8 +72,10 @@ export class AddMovieForm extends React.Component {
 
     return (
       <div className='form__modal'>
-        <span className='form__modal--close-btn' onClick={ this.props.closeForm }>X</span>
         <div className='form__modal--container'>
+          <span className='form__modal--close-btn' onClick={ this.props.closeForm }>
+            <i className="fa fa-times fa-3" aria-hidden="true"></i>
+          </span>
           <h1 htmlFor="movie-form">Add a new movie</h1>
           <form onSubmit={ (e) => this.handleSubmit(e) } className='form__element'>
             <TextInput className='form__element-title'
