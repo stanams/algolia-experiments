@@ -1,8 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { SearchResultsListItem } from '../index.components'
 import './SearchResultsList.component.css'
 
 export const SearchResultsList = ({ results }) => {
+
   return (
     <div>
       {
@@ -17,4 +19,8 @@ export const SearchResultsList = ({ results }) => {
       }
     </div>
   )   
+}
+
+SearchResultsList.propTypes = {
+  results: PropTypes.object
 }

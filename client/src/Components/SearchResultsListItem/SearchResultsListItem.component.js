@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Rating } from 'semantic-ui-react'
 import classNames from 'classnames'
 import './SearchResultsListItem.component.css'
@@ -44,4 +45,9 @@ export class SearchResultsListItem extends React.Component {
       </div>
     )   
   }
+}
+
+SearchResultsListItem.propTypes = {
+  from: PropTypes.string.isRequired,
+  movie: PropTypes.object.isRequired
 }

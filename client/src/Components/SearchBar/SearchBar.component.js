@@ -1,7 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './SearchBar.component.css'
 
 export const SearchBar = ({ query, handleInput }) => {
+
   return (
     <div className="search-bar">
       <i className="fa fa-search" aria-hidden="true"></i>
@@ -12,4 +14,9 @@ export const SearchBar = ({ query, handleInput }) => {
              placeholder="Search by title: Titanic, Matrix..."/>
     </div>
   )   
+}
+
+SearchBar.propTypes = {
+  query: PropTypes.string,
+  handleInput: PropTypes.func.isRequired
 }

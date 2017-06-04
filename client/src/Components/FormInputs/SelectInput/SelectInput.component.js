@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
 import './SelectInput.component.css'
@@ -53,3 +54,10 @@ export const SelectInput = ({ label, yearValue, genreValue, handleSelectYearChan
   )
 }
 
+SelectInput.propTypes = {
+  yearValue: PropTypes.string,
+  genreValue: PropTypes.array,
+  label: PropTypes.string.isRequired,
+  handleSelectYearChange: PropTypes.func,
+  handleSelectGenreChange: PropTypes.func
+}

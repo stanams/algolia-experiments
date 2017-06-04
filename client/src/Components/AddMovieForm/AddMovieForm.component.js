@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './AddMovieForm.component.css'
 import { MoviesService } from '../../Services/movies.service'
 
@@ -115,4 +116,8 @@ export class AddMovieForm extends React.Component {
       </div>
     )
   }
+}
+
+AddMovieForm.propTypes = {
+  closeForm: PropTypes.func
 }
