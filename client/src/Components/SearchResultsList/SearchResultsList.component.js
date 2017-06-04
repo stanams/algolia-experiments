@@ -4,13 +4,17 @@ import './SearchResultsList.component.css'
 
 export const SearchResultsList = ({ results }) => {
   return (
-    <ul className='result-list-container'>
+    <div>
       {
         results.hits &&
+      <ul className='result-list-container'>
+        {
           Array.from(results.hits).map(movie => (
             <SearchResultsListItem from='result-list' key={movie.objectID} movie={movie}/>     
           ))
+        }
+      </ul>
       }
-    </ul>
+    </div>
   )   
 }

@@ -52,7 +52,6 @@ export class AddMovieForm extends React.Component {
 	}
   
   handleRate = (e, { rating }) => {
-    console.log(rating)
     this.setState({ rating: rating })
   }
 
@@ -62,7 +61,7 @@ export class AddMovieForm extends React.Component {
   }
 
   render() {
-    const { title, alternative_titles, year, image, rating, actors, genre } = this.state
+    const { title, alternative_titles, year, image, actors, genre } = this.state
 
     return (
       <div className='form__modal'>

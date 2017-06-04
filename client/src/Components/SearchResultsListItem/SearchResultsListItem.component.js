@@ -29,7 +29,7 @@ export class SearchResultsListItem extends React.Component {
           <img className='list__item--content-light--image' src={ movie.image } alt=""/>
           <div className="item--text">
             <span className="item--text--title">{ movie.title }</span>
-            <span>Rating: <Rating icon='star' rating={ movie.rating } maxRating={5} disabled/></span>
+            <span>Rating: <Rating rating={ movie.rating } maxRating={5} disabled/></span>
             <span>Genre: { from === 'result-list' ? JSON.parse(movie.genre).join(', ') : movie.genre }</span>
           </div>
         </div>
@@ -40,6 +40,7 @@ export class SearchResultsListItem extends React.Component {
             <div className='item-link'>Watch it on Netflix</div>
           </div>
         }
+        <div></div>
       </div>
     )   
   }
