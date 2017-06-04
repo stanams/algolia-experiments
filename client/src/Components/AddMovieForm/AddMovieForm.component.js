@@ -119,5 +119,6 @@ export class AddMovieForm extends React.Component {
 }
 
 AddMovieForm.propTypes = {
-  closeForm: PropTypes.func
+  closeForm: PropTypes.func,
+  addMovie: PropTypes.func
 }

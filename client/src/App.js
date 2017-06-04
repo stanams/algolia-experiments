@@ -1,11 +1,23 @@
 import React, { Component } from 'react'
 import './App.css'
-import { Header } from './Components/Header/Header.component'
-import { SearchBar } from './Components/SearchBar/SearchBar.component'
-import { SearchResultsList } from './Components/SearchResultsList/SearchResultsList.component'
-import { AddMovieButton } from './Components/AddMovieButton/AddMovieButton.component'
-import { AddMovieForm } from './Components/AddMovieForm/AddMovieForm.component'
+import {
+  Header,
+  SearchBar,
+  SearchResultsList,
+  AddMovieButton,
+  AddMovieForm
+} from './Components/index.components'
+
 import algoliasearch from 'algoliasearch'
+import { connect } from 'react-redux'
+
+import {
+  addMovie,
+  deleteMovie,
+  searchMovies
+} from './Redux/movie/movie.actions'
+
+import MoviesService from './Services/movies.service'
 
 const client = algoliasearch('J2ZJK8FEIS', '399b6ba8d0bf23ef41f3314ca025fa0a');
 const index = client.initIndex('Movie');
@@ -60,11 +72,26 @@ class App extends Component {
         </div>
         <SearchResultsList results={ results }/>
         { isFormOpen &&
-          <AddMovieForm closeForm={ this.closeForm }/>
+          <AddMovieForm addMovie={ this.props.action.addMovie } addcloseForm={ this.closeForm }/>
         }
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state, props) => {
+  return {
+    movies: state.movies
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addMovie: (movie) => {
+      dispatch(addMovie())
+      return MoviesService.addMovie(movie)
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
