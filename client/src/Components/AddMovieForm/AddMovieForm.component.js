@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Rating } from 'semantic-ui-react'
 import './AddMovieForm.component.css'
-// import { SearchResultsListItem } from '../SearchResultsListItem/SearchResultsListItem.component'
+import { SearchResultsListItem } from '../SearchResultsListItem/SearchResultsListItem.component'
 import { MoviesService } from '../../Services/movies.service'
 import { SelectInput } from '../FormInputs/SelectInput/SelectInput.component'
 import { TextInput } from '../FormInputs/TextInput/TextInput'
@@ -48,16 +48,18 @@ export class AddMovieForm extends React.Component {
 	}
 
   handleSelectGenreChange = (value) => {
-    console.log(value)
     this.setState({ genre: value })
 	}
+  
+  handleRate = (e, { rating }) => {
+    console.log(rating)
+    this.setState({ rating: rating })
+  }
 
   handleSubmit = (e) => {
     e.preventDefault()
     MoviesService.addMovie(this.state)
   }
-
-  handleRate = (e, { rating }) => this.setState({ rating })
 
   render() {
     const { title, alternative_titles, year, image, rating, actors, genre } = this.state
@@ -97,11 +99,10 @@ export class AddMovieForm extends React.Component {
             </div>
             <Button className='form__element-btn' type="submit">Submit</Button>
           </form>
-          { /*add prview here*/ }
-          {/*<div className='form__modal-movie-preview'>
-            <div>Preview</div>
-            <SearchResultsListItem movie={ this.state }/>
-          </div>*/}
+          <div className='form__modal-movie-preview'>
+            <div className='form__modal-movie-preview-title'>Preview</div>
+            <SearchResultsListItem from='form' movie={ this.state }/>
+          </div>
         </div>
       </div>
     )

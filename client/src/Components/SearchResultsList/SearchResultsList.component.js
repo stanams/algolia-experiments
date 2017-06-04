@@ -8,7 +8,7 @@ export const SearchResultsList = ({ results }) => {
       {
         results.hits &&
           Array.from(results.hits).map(movie => (
-            <SearchResultsListItem key={movie.objectID} movie={movie}/>     
+            <SearchResultsListItem from='result-list' key={movie.objectID} movie={movie}/>     
           ))
       }
     </ul>

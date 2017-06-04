@@ -17,25 +17,26 @@ export class SearchResultsListItem extends React.Component {
   }
 
   render () {
-    const { movie } = this.props
+    const { movie, from } = this.props
     const { isOpen } = this.state
     const classnames = classNames('list__item', {
       'full-content': isOpen
     })
+
     return (
       <div className={ classnames } onClick={ this.toggleDetails }>
         <div className="list__item--content-light">
-          <img className='list__item--content-light--image' src={movie.image} alt=""/>
+          <img className='list__item--content-light--image' src={ movie.image } alt=""/>
           <div className="item--text">
-            <span className="item--text--title">{movie.title}</span>
-            <span>Rating: <Rating icon='star' defaultRating={movie.rating} maxRating={5} disabled/></span>
-            <span>Genre: {JSON.parse(movie.genre).join(', ')}</span>
+            <span className="item--text--title">{ movie.title }</span>
+            <span>Rating: <Rating icon='star' rating={ movie.rating } maxRating={5} disabled/></span>
+            <span>Genre: { from === 'result-list' ? JSON.parse(movie.genre).join(', ') : movie.genre }</span>
           </div>
         </div>
         { isOpen &&
           <div className="list__item--content-full">
-            <div className='item-year'>Year: {movie.year}</div>
-            <div className='item-actors'>Actors: {JSON.parse(movie.actors).join(', ')}</div>
+            <div className='item-year'>Year: { movie.year }</div>
+            <div className='item-actors'>Actors: { from === 'result-list' ? JSON.parse(movie.actors).join(', ') : movie.actors }</div>
             <div className='item-link'>Watch it on Netflix</div>
           </div>
         }

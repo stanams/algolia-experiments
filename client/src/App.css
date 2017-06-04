@@ -4,7 +4,8 @@
   flex-direction: column;
   justify-content: space-around;
   padding: 40px;
-  position: relative; }
+  position: relative;
+  font-family: 'Montserrat', sans-serif; }
   .App .search-container {
     display: flex;
     flex-direction: row;

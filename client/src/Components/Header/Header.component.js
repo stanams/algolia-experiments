@@ -1,10 +1,11 @@
 import React from 'react'
+import logo from '../../logo.png'
 
 export const Header = () => {
   return (
-    <div className='title'>
-      Movilia - 
-      Search movies at the speed of light
+    <div>
+      <img src={logo} alt='movilia-logo/'/>
+      <div className='tagline'>Search movies at the speed of light</div>
     </div>
   )   
 }

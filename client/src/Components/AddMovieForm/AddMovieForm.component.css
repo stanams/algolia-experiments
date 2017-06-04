@@ -19,8 +19,8 @@
     margin-right: 100px;
     cursor: pointer; }
   .form__modal--container {
-    width: 600px;
-    height: 700px;
+    max-width: 590px;
+    height: 100%;
     background-color: white;
     margin: 40px auto;
     padding: 40px;
@@ -47,3 +47,5 @@
       .form__modal--container .form__element-year {
         width: 30px;
         margin-top: 8px; }
+  .form__modal-movie-preview-title {
+    margin-bottom: 10px; }
