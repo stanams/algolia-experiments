@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import './App.css'
-import { Header } from './Components/Header/Header.component'
-import { SearchBar } from './Components/SearchBar/SearchBar.component'
-import { SearchResultsList } from './Components/SearchResultsList/SearchResultsList.component'
-import { AddMovieButton } from './Components/AddMovieButton/AddMovieButton.component'
-import { AddMovieForm } from './Components/AddMovieForm/AddMovieForm.component'
-import algoliasearch from 'algoliasearch'
+import {
+  Header,
+  SearchBar,
+  SearchResultsList,
+  AddMovieButton,
+  AddMovieForm
+} from './Components/index.components'
 
-const client = algoliasearch('J2ZJK8FEIS', '399b6ba8d0bf23ef41f3314ca025fa0a');
-const index = client.initIndex('Movie');
+import { connect } from 'react-redux'
+
+import {
+  searchMovies
+} from './Actions/movies'
 
 class App extends Component {
 
@@ -16,29 +20,17 @@ class App extends Component {
     super(props)
     this.state = {
       isFormOpen: false,
-      query: '',
-      results: {}
+      query: ''
     }
     this.openForm = this.openForm.bind(this)
     this.closeForm = this.closeForm.bind(this)
     this.handleInput = this.handleInput.bind(this)
-    this.search = this.search.bind(this)
   }
 
   handleInput(e) {
     const query = e.target.value
     this.setState({ query: query })
-    this.search(query)
-  }
-
-  search(query) {
-    index.search(query, function searchDone(err, content) {
-    if (err) {
-      console.error(err)
-      return
-    }
-    this.setState({ results: content })
-    }.bind(this))
+    this.props.searchMovies(query)
   }
 
   openForm() {
@@ -50,7 +42,9 @@ class App extends Component {
   }
 
   render() {
-    const { isFormOpen, query, results } = this.state
+    const { isFormOpen, query } = this.state
+    const { loading, moviesList } = this.props
+
     return (
       <div className="App">
         <Header/>
@@ -58,13 +52,28 @@ class App extends Component {
           <SearchBar query={ query } handleInput={ this.handleInput } />
           <AddMovieButton openForm={ this.openForm }/>
         </div>
-        <SearchResultsList results={ results }/>
+        <SearchResultsList loading={ loading } results={ moviesList }/>
         { isFormOpen &&
-          <AddMovieForm closeForm={ this.closeForm }/>
+          <AddMovieForm addMovie={ this.props.action.addMovie } addcloseForm={ this.closeForm }/>
         }
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state, props) => {
+  return {
+    moviesList: state.movies.list,
+    loading: state.app.loading
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    searchMovies(query) {
+      dispatch(searchMovies(query))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

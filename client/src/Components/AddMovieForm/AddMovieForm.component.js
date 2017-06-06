@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './AddMovieForm.component.css'
-import { MoviesService } from '../../Services/movies.service'
+import MoviesService from '../../Services/movies'
 
 import {
   Button,
@@ -119,5 +119,6 @@ export class AddMovieForm extends React.Component {
 }
 
 AddMovieForm.propTypes = {
-  closeForm: PropTypes.func
+  closeForm: PropTypes.func,
+  addMovie: PropTypes.func
 }

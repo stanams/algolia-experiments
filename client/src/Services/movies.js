@@ -1,15 +1,14 @@
 import { AbstractService } from './abstract.service'
+import { movieIndex } from '../Core/algoliaClient'
+import apis from '../Core/apis'
 
-const url = '/api/movies'
-const headers = "'Content-Type': 'application/json'"
 
-export class MoviesService extends AbstractService {
+
+export default class MoviesService extends AbstractService {
   static addMovie = (movie) => (
-    fetch(url, {
+    fetch(apis.moviesUrl, {
       method: 'POST',
-      headers: {
-        headers
-      },
+      headers: apis.headers,
       body: JSON.stringify({
         movie: {
           "title": movie.title,
@@ -27,4 +26,16 @@ export class MoviesService extends AbstractService {
     .then(MoviesService.parseJSON)
     .catch(MoviesService.handleError)
   )
+
+  static searchMovies(query) {
+    return new Promise((resolve, reject) => {
+      movieIndex.search(query, function searchDone(err, content) {
+        if (err) {
+          return reject(err);
+        }
+      
+        resolve(content)
+      })
+    })
+  }
 }
