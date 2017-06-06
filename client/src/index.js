@@ -4,12 +4,10 @@ import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 import './index.css'
 import { Provider } from 'react-redux'
-import Store from './Redux/store'
-
-const StoreInstance = Store()
+import Store from './Store'
 
 ReactDOM.render(
-  <Provider store={StoreInstance}>
+  <Provider store={Store}>
     <App />
   </Provider>,
   document.getElementById('root'))

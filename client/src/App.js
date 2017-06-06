@@ -8,19 +8,11 @@ import {
   AddMovieForm
 } from './Components/index.components'
 
-import algoliasearch from 'algoliasearch'
 import { connect } from 'react-redux'
 
 import {
-  addMovie,
-  deleteMovie,
   searchMovies
-} from './Redux/movie/movie.actions'
-
-import MoviesService from './Services/movies.service'
-
-const client = algoliasearch('J2ZJK8FEIS', '399b6ba8d0bf23ef41f3314ca025fa0a');
-const index = client.initIndex('Movie');
+} from './Actions/movies'
 
 class App extends Component {
 
@@ -28,29 +20,17 @@ class App extends Component {
     super(props)
     this.state = {
       isFormOpen: false,
-      query: '',
-      results: {}
+      query: ''
     }
     this.openForm = this.openForm.bind(this)
     this.closeForm = this.closeForm.bind(this)
     this.handleInput = this.handleInput.bind(this)
-    this.search = this.search.bind(this)
   }
 
   handleInput(e) {
     const query = e.target.value
     this.setState({ query: query })
-    this.search(query)
-  }
-
-  search(query) {
-    index.search(query, function searchDone(err, content) {
-    if (err) {
-      console.error(err)
-      return
-    }
-    this.setState({ results: content })
-    }.bind(this))
+    this.props.searchMovies(query)
   }
 
   openForm() {
@@ -62,7 +42,9 @@ class App extends Component {
   }
 
   render() {
-    const { isFormOpen, query, results } = this.state
+    const { isFormOpen, query } = this.state
+    const { loading, moviesList } = this.props
+
     return (
       <div className="App">
         <Header/>
@@ -70,7 +52,7 @@ class App extends Component {
           <SearchBar query={ query } handleInput={ this.handleInput } />
           <AddMovieButton openForm={ this.openForm }/>
         </div>
-        <SearchResultsList results={ results }/>
+        <SearchResultsList loading={ loading } results={ moviesList }/>
         { isFormOpen &&
           <AddMovieForm addMovie={ this.props.action.addMovie } addcloseForm={ this.closeForm }/>
         }
@@ -81,15 +63,15 @@ class App extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    movies: state.movies
+    moviesList: state.movies.list,
+    loading: state.app.loading
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addMovie: (movie) => {
-      dispatch(addMovie())
-      return MoviesService.addMovie(movie)
+    searchMovies(query) {
+      dispatch(searchMovies(query))
     }
   }
 }
