@@ -4,7 +4,6 @@ import { SearchResultsListItem } from '../index.components'
 import './SearchResultsList.component.css'
 
 export const SearchResultsList = ({ results, loading }) => {
-
   return (
     <div>
       <h3 className='loading__element'>{ loading ? 'Loading...' : '' }</h3>
@@ -19,7 +18,7 @@ export const SearchResultsList = ({ results, loading }) => {
       </ul>
       }
     </div>
-  )   
+  )
 }
 
 SearchResultsList.propTypes = {

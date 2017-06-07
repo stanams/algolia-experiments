@@ -12,7 +12,23 @@ import { connect } from 'react-redux'
 
 import {
   searchMovies
-} from './Actions/movies'
+} from './Actions/movies.actions'
+
+
+const mapStateToProps = (state, props) => {
+  return {
+    moviesList: state.movies.list,
+    loading: state.app.loading
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    searchMovies(query) {
+      dispatch(searchMovies(query))
+    }
+  }
+}
 
 class App extends Component {
 
@@ -59,25 +75,10 @@ class App extends Component {
         </div>
         <SearchResultsList loading={ loading } results={ moviesList }/>
         { isFormOpen &&
-          <AddMovieForm addMovie={ this.props.action.addMovie } addcloseForm={ this.closeForm }/>
+          <AddMovieForm addcloseForm={ this.closeForm }/>
         }
       </div>
     );
-  }
-}
-
-const mapStateToProps = (state, props) => {
-  return {
-    moviesList: state.movies.list,
-    loading: state.app.loading
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    searchMovies(query) {
-      dispatch(searchMovies(query))
-    }
   }
 }
 

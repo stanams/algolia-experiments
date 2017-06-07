@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './AddMovieForm.component.css'
-import MoviesService from '../../Services/movies'
+import MoviesService from '../../Services/movies.service'
 
 import {
   Button,
@@ -19,13 +19,15 @@ export class AddMovieForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: '',
-      alternative_titles: [],
-      year: '',
-      image: '',
-      rating: '',
-      actors: '',
-      genre: []
+      movie: {
+        title: '',
+        alternative_titles: [],
+        year: '',
+        image: '',
+        rating: '',
+        actors: '',
+        genre: []
+      }
     }
   }
 
@@ -35,16 +37,16 @@ export class AddMovieForm extends React.Component {
     const value = e.target.value
     switch (inputName) {
       case 'title':
-        this.setState({ title: value })
+        this.setState({ movie: { title: value } })
         break
       case 'alternative_titles':
-        this.setState({ alternative_titles: value })
+        this.setState({ movie: { alternative_titles: value } })
         break
       case 'image':
-        this.setState({ image: value })
+        this.setState({ movie: { image: value } })
         break
       case 'actors':
-        this.setState({ actors: value })
+        this.setState({ movie: { actors: value } })
         break
       default:
         return
@@ -52,20 +54,20 @@ export class AddMovieForm extends React.Component {
   }
 
   handleSelectYearChange = (value) => {
-    this.setState({ year: value })
+    this.setState({ movie: { year: value } })
 	}
 
   handleSelectGenreChange = (value) => {
-    this.setState({ genre: value })
+    this.setState({ movie: { genre: value } })
 	}
   
   handleRate = (e, { rating }) => {
-    this.setState({ rating: rating })
+    this.setState({ movie: { rating: rating } })
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-    MoviesService.addMovie(this.state)
+    MoviesService.addMovie(this.state.movie)
   }
 
   render() {

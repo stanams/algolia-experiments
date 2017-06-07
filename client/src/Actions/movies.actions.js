@@ -1,6 +1,6 @@
 import CONSTANTS from '../Core/constants'
-import MoviesService from '../Services/movies'
-import { debounce } from '../Core/utils'
+import MoviesService from '../Services/movies.service'
+import { throttle } from '../Core/utils'
 
 const ADD_MOVIE = 'ADD_MOVIE'
 export const addMovie = (movie) => {
@@ -24,12 +24,12 @@ export const searchMovies = (query) => {
     })
 
     MoviesService.searchMovies(query)
-      .then(debounce(movies => {
+      .then(throttle(movies => {
         dispatch({
           type: CONSTANTS.EVENT_TYPES.MOVIES.SEARCH_MOVIES_SUCCESS,
           movies
         })
-      }, 500))
+      }, 250))
       .catch(() => {
         dispatch({
           type: CONSTANTS.EVENT_TYPES.MOVIES.SEARCH_MOVIES_FAILURE
