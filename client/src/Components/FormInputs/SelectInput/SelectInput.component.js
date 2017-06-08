@@ -55,8 +55,8 @@ export const SelectInput = ({ label, yearValue, genreValue, handleSelectYearChan
 }
 
 SelectInput.propTypes = {
-  yearValue: PropTypes.string,
-  genreValue: PropTypes.array,
+  yearValue: PropTypes.number,
+  genreValue: PropTypes.string,
   label: PropTypes.string.isRequired,
   handleSelectYearChange: PropTypes.func,
   handleSelectGenreChange: PropTypes.func

@@ -75,7 +75,7 @@ class App extends Component {
         </div>
         <SearchResultsList loading={ loading } results={ moviesList }/>
         { isFormOpen &&
-          <AddMovieForm addcloseForm={ this.closeForm }/>
+          <AddMovieForm closeForm={ this.closeForm }/>
         }
       </div>
     );

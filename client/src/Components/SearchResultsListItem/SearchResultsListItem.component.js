@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Rating } from 'semantic-ui-react'
 import classNames from 'classnames'
 import './SearchResultsListItem.component.css'
-
+import { truncate } from '../../Core/utils'
 export class SearchResultsListItem extends React.Component {
   
   constructor(props) {
@@ -29,7 +29,7 @@ export class SearchResultsListItem extends React.Component {
         <div className="list__item--content-light">
           <img className='list__item--content-light--image' src={ movie.image } alt=""/>
           <div className="item--text">
-            <span className="item--text--title">{ movie.title }</span>
+            <span className="item--text--title">{ truncate(movie.title, 50) }</span>
             <span>Rating: <Rating rating={ movie.rating } maxRating={5} disabled/></span>
             <span>Genre: { from === 'result-list' ? JSON.parse(movie.genre).join(', ') : movie.genre }</span>
           </div>

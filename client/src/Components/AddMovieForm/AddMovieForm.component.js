@@ -19,34 +19,30 @@ export class AddMovieForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      movie: {
         title: '',
         alternative_titles: [],
-        year: '',
-        image: '',
-        rating: '',
+        year: 2017,
+        image: 'http://media.comicbook.com/files/img/default-movie.png',
+        rating: 0,
         actors: '',
-        genre: []
-      }
+        genre: ''
     }
   }
-
-  // default image: http://media.comicbook.com/files/img/default-movie.png
 
   handleInputChange = (e, inputName) => {
     const value = e.target.value
     switch (inputName) {
       case 'title':
-        this.setState({ movie: { title: value } })
+        this.setState({ title: value })
         break
       case 'alternative_titles':
-        this.setState({ movie: { alternative_titles: value } })
+        this.setState({ alternative_titles: value })
         break
       case 'image':
-        this.setState({ movie: { image: value } })
+        this.setState({ image: value })
         break
       case 'actors':
-        this.setState({ movie: { actors: value } })
+        this.setState({ actors: value })
         break
       default:
         return
@@ -54,25 +50,27 @@ export class AddMovieForm extends React.Component {
   }
 
   handleSelectYearChange = (value) => {
-    this.setState({ movie: { year: value } })
+    this.setState({ year: value })
 	}
 
   handleSelectGenreChange = (value) => {
-    this.setState({ movie: { genre: value } })
+    this.setState({ genre: value })
 	}
   
   handleRate = (e, { rating }) => {
-    this.setState({ movie: { rating: rating } })
+    this.setState({ rating: rating })
+    console.log(rating)
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-    MoviesService.addMovie(this.state.movie)
+    MoviesService.addMovie(this.state)
+    this.props.closeForm()
   }
 
   render() {
-    const { title, alternative_titles, year, image, actors, genre } = this.state
-
+    const { title, alternative_titles, year, image, actors, genre, rating } = this.state
+    console.log(this.state)
     return (
       <div className='form__modal'>
         <div className='form__modal--container'>
@@ -106,7 +104,7 @@ export class AddMovieForm extends React.Component {
                        value={ image }
                        inputType='Image URL'/>
             <div className='form__element-rating'>
-              Rating: <Rating maxRating={5} onRate={ this.handleRate }/>
+              Rating: <Rating maxRating={5} rating={ rating } onRate={ this.handleRate }/>
             </div>
             <Button className='form__element-btn' type="submit">Submit</Button>
           </form>
