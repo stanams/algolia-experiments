@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './AddMovieForm.component.css'
-import MoviesService from '../../Services/movies.service'
+import { connect } from 'react-redux'
 
 import {
   Button,
@@ -14,18 +14,22 @@ import {
   TextInput
 } from '../index.components'
 
-export class AddMovieForm extends React.Component {
+import {
+  addMovie
+} from '../../Actions/movies.actions'
+
+class AddMovieForm extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-        title: '',
-        alternative_titles: [],
-        year: 2017,
-        image: 'http://media.comicbook.com/files/img/default-movie.png',
-        rating: 0,
-        actors: '',
-        genre: ''
+          title: '',
+          alternative_titles: [],
+          year: 2017,
+          image: 'http://media.comicbook.com/files/img/default-movie.png',
+          rating: 0,
+          actors: '',
+          genre: ''
     }
   }
 
@@ -59,18 +63,16 @@ export class AddMovieForm extends React.Component {
   
   handleRate = (e, { rating }) => {
     this.setState({ rating: rating })
-    console.log(rating)
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-    MoviesService.addMovie(this.state)
+    this.props.addMovie(this.state)
     this.props.closeForm()
   }
 
   render() {
     const { title, alternative_titles, year, image, actors, genre, rating } = this.state
-    console.log(this.state)
     return (
       <div className='form__modal'>
         <div className='form__modal--container'>
@@ -122,3 +124,16 @@ AddMovieForm.propTypes = {
   closeForm: PropTypes.func,
   addMovie: PropTypes.func
 }
+
+const mapStateToProps = (state, props) => { 
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addMovie(movie) {
+      dispatch(addMovie(movie))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddMovieForm)

@@ -1,5 +1,4 @@
 export { AddMovieButton } from './AddMovieButton/AddMovieButton.component'
-export { AddMovieForm } from './AddMovieForm/AddMovieForm.component'
 export { SelectInput } from './FormInputs/SelectInput/SelectInput.component'
 export { TextInput } from './FormInputs/TextInput/TextInput.component'
 export { Header } from './Header/Header.component'

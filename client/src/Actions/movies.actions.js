@@ -23,11 +23,25 @@ export const searchMovies = (query) => {
   };
 }
 
-const ADD_MOVIE = 'ADD_MOVIE'
 export const addMovie = (movie) => {
-  return {
-    type: ADD_MOVIE,
-    movie
+  return (dispatch) => {
+    dispatch({
+      type: CONSTANTS.EVENT_TYPES.MOVIES.ADD_MOVIE_REQUEST
+    })
+
+    MoviesService.addMovie(movie)
+      .then(movie => {
+        dispatch({
+          type: CONSTANTS.EVENT_TYPES.MOVIES.ADD_MOVIE_SUCCESS,
+          movie
+        })
+      })
+      .catch(() => {
+        dispatch({
+          type: CONSTANTS.EVENT_TYPES.MOVIES.ADD_MOVIE_FAILURE
+        })
+      })
+
   }
 }
 

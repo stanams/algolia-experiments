@@ -4,9 +4,9 @@ import {
   Header,
   SearchBar,
   SearchResultsList,
-  AddMovieButton,
-  AddMovieForm
+  AddMovieButton
 } from './Components/index.components'
+import AddMovieForm from './Components/AddMovieForm/AddMovieForm.component'
 
 import { connect } from 'react-redux'
 

@@ -1,5 +1,6 @@
 class Movie < ApplicationRecord
-  # validates_presence_of Movie.attribute_names
+  validates :title, :actors, :genre, :rating, :year, :image, presence: true
+  validates :title, uniqueness: true
   
   include AlgoliaSearch
 
@@ -13,7 +14,6 @@ class Movie < ApplicationRecord
                :year,
                :image,
                :color,
-               :actors,
                :alternative_titles
 
     searchableAttributes ['title', 'alternative_titles', 'actors']

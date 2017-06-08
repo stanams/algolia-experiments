@@ -3,8 +3,7 @@ const defaultState = {
     loading: false
   },
   movies: {
-    list: {},
-    new: {}
+    list: {}
   }
 }
 
