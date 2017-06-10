@@ -1,0 +1,7 @@
+.form__select-input-genre {
+  margin-top: 28px; }
+
+.form__select-input .error-message {
+  color: #ED4343;
+  font-size: 12px;
+  margin-bottom: 5px; }

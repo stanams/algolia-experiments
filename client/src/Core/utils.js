@@ -25,3 +25,42 @@ export function truncate(string, maxLength) {
     return string
   }
 }
+
+export function validateState(state, validation) {
+  let isValid = true;
+
+  const validatedState = Object.keys(state).reduce((validatedState, key) => {
+    validatedState[key] = _validateKeyValue(key, state[key]);
+    return validatedState;
+  }, {});
+
+  function _validateKeyValue(key, value) {
+    if (validation[key] && validation[key].rules) {
+      validation[key].errors = {};
+
+      if (validation[key].rules.required) {
+        const isArr = validation[key].rules.arr;
+
+        if ((isArr && value.length === 0) || (!isArr && !value)) {
+          // TODO: use lodash to imutably set the errors
+          validation[key].errors.required = 'This field is required';
+          isValid = false;
+        }
+      }
+    }
+
+    return validation[key];
+  }
+
+  return {
+    isValid,
+    validatedState
+  }
+}
+
+export function errorsObjToString(errors = {}) {
+  return Object.keys(errors).reduce((errorStr, key) => {
+    errorStr += errors[key]
+    return errorStr 
+  }, '');
+}

@@ -1,12 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './TextInput.component.css'
+import { errorsObjToString } from '../../../Core/utils'
+import classNames from 'classnames'
 
-export const TextInput = ({ value, onChange, inputType }) => {
+export const TextInput = ({ value, onChange, inputType, errors }) => {
+  
+  const classnames = classNames('form__input', { 'form__input-image': inputType.includes('Image') })
+
   return(
-    <div className='form__input'>
+    <div className={classnames}>
       <label className='form__input--label' htmlFor="text">{ inputType }</label>
       <input type='text' value={ value } onChange={ onChange }/>
+      <span className='error-message'>{errorsObjToString(errors)}</span>
     </div>
   )
 }

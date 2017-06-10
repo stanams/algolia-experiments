@@ -31,13 +31,13 @@ export class SearchResultsListItem extends React.Component {
           <div className="item--text">
             <span className="item--text--title">{ truncate(movie.title, 50) }</span>
             <span>Rating: <Rating rating={ movie.rating } maxRating={5} disabled/></span>
-            <span>Genre: { from === 'result-list' ? JSON.parse(movie.genre).join(', ') : movie.genre }</span>
+            <span>Genre: { movie.genre }</span>
           </div>
         </div>
         { isOpen &&
           <div className="list__item--content-full">
             <div className='item-year'>Year: { movie.year }</div>
-            <div className='item-actors'>Actors: { from === 'result-list' ? JSON.parse(movie.actors).join(', ') : movie.actors }</div>
+            <div className='item-actors'>Actors: { movie.actors }</div>
             <div className='item-link'>Watch it on Netflix</div>
           </div>
         }
@@ -51,3 +51,6 @@ SearchResultsListItem.propTypes = {
   from: PropTypes.string.isRequired,
   movie: PropTypes.object.isRequired
 }
+
+// from === 'result-list' ? JSON.parse(movie.genre).join(', ') : 
+// from === 'result-list' ? JSON.parse(movie.actors).join(', ') : 

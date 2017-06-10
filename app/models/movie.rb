@@ -1,6 +1,6 @@
 class Movie < ApplicationRecord
-  validates :title, :actors, :genre, :rating, :year, :image, presence: true
-  validates :title, uniqueness: true
+  # validates :title, :actors, :genre, :rating, :year, :image, presence: true
+  # validates :title, uniqueness: true
   
   include AlgoliaSearch
 

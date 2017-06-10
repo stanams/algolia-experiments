@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './AddMovieForm.component.css'
 import { connect } from 'react-redux'
+import { validateState } from '../../Core/utils'
 
 import {
   Button,
@@ -23,13 +24,43 @@ class AddMovieForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-          title: '',
-          alternative_titles: [],
-          year: 2017,
-          image: 'http://media.comicbook.com/files/img/default-movie.png',
-          rating: 0,
-          actors: '',
-          genre: ''
+      newMovie: {
+        title: '',
+        alternative_titles: [],
+        year: 2017,
+        image: 'http://media.comicbook.com/files/img/default-movie.png',
+        rating: 0,
+        actors: '',
+        genre: ''
+      },
+      validation: {
+        title: {
+          rules: {
+            required: true
+          }  
+        },
+        alternative_titles: {
+          rules: {
+            arr: true,
+            required: true
+          }
+        },
+        year: {
+          rules: {
+            require: true
+          } 
+        },
+        actors: {
+          rules: {
+            required: true
+          }
+        },
+        genre: {
+          rules: {
+            required: true
+          }
+        }
+      }
     }
   }
 
@@ -37,16 +68,16 @@ class AddMovieForm extends React.Component {
     const value = e.target.value
     switch (inputName) {
       case 'title':
-        this.setState({ title: value })
+        this.setState({ newMovie: {...this.state.newMovie, title: value} })
         break
       case 'alternative_titles':
-        this.setState({ alternative_titles: value })
+        this.setState({ newMovie: {...this.state.newMovie, alternative_titles: value} })
         break
       case 'image':
-        this.setState({ image: value })
+        this.setState({ newMovie: {...this.state.newMovie, image: value} })
         break
       case 'actors':
-        this.setState({ actors: value })
+        this.setState({ newMovie: {...this.state.newMovie, actors: value} })
         break
       default:
         return
@@ -54,25 +85,32 @@ class AddMovieForm extends React.Component {
   }
 
   handleSelectYearChange = (value) => {
-    this.setState({ year: value })
+    this.setState({ newMovie: {...this.state.newMovie, year: value} })
 	}
 
   handleSelectGenreChange = (value) => {
-    this.setState({ genre: value })
+    this.setState({ newMovie: {...this.state.newMovie, genre: value} })
 	}
   
   handleRate = (e, { rating }) => {
-    this.setState({ rating: rating })
+    this.setState({ newMovie: {...this.state.newMovie, rating} })
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.addMovie(this.state)
-    this.props.closeForm()
+    console.log(this.state.newMovie)
+    const { isValid, validatedState } = validateState(this.state.newMovie, this.state.validation)
+
+    if (isValid) {
+      this.props.addMovie(this.state.newMovie)
+      this.props.closeForm()
+    } else {
+      this.setState({...validatedState});
+    }
   }
 
   render() {
-    const { title, alternative_titles, year, image, actors, genre, rating } = this.state
+    const { title, alternative_titles, year, image, actors, genre, rating } = this.state.newMovie
     return (
       <div className='form__modal'>
         <div className='form__modal--container'>
@@ -84,21 +122,26 @@ class AddMovieForm extends React.Component {
             <TextInput className='form__element-title'
                        onChange={ (e, inputName) => this.handleInputChange(e, 'title') }
                        value={ title }
+                       errors={this.state.validation.title.errors}
                        inputType='Title'/>
             <SelectInput className='form__element-year'
                          label='Year'
+                         errors={this.state.validation.year.errors}
                          yearValue={ year }
                          handleSelectYearChange={ this.handleSelectYearChange } />
             <TextInput className='form__element-alternative-titles'
                        onChange={ (e, inputName) => this.handleInputChange(e, 'alternative_titles') }
+                       errors={ this.state.validation.alternative_titles.errors }
                        value={ alternative_titles }
                        inputType='Alternative Titles' />
             <TextInput className='form__element-actors'
                        onChange={ (e, inputName) => this.handleInputChange(e, 'actors') }
+                       errors={ this.state.validation.actors.errors }
                        value={ actors }
                        inputType='Actors'/>
             <SelectInput className='form__element-genre'
                          label='Genre'
+                         errors={ this.state.validation.genre.errors }
                          genreValue={ genre }
                          handleSelectGenreChange={ this.handleSelectGenreChange } />
             <TextInput className='form__element-image'
@@ -112,7 +155,7 @@ class AddMovieForm extends React.Component {
           </form>
           <div className='form__modal-movie-preview'>
             <div className='form__modal-movie-preview-title'>Preview</div>
-            <SearchResultsListItem from='form' movie={ this.state }/>
+            <SearchResultsListItem from='form' movie={ this.state.newMovie }/>
           </div>
         </div>
       </div>
@@ -125,15 +168,12 @@ AddMovieForm.propTypes = {
   addMovie: PropTypes.func
 }
 
-const mapStateToProps = (state, props) => { 
-}
+const mapStateToProps = (state, props) => ({})
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addMovie(movie) {
-      dispatch(addMovie(movie))
-    }
+const mapDispatchToProps = (dispatch) => ({
+  addMovie(movie) {
+    dispatch(addMovie(movie))
   }
-}
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddMovieForm)

@@ -7,6 +7,7 @@ import {
   AddMovieButton
 } from './Components/index.components'
 import AddMovieForm from './Components/AddMovieForm/AddMovieForm.component'
+import Message from './Components/Message/Message.component'
 
 import { connect } from 'react-redux'
 
@@ -69,6 +70,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header/>
+        <Message />
         <div className="search-container">
           <SearchBar query={ query } handleInput={ this.handleInput } />
           <AddMovieButton openForm={ this.openForm }/>

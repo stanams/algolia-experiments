@@ -1,6 +1,7 @@
 const defaultState = {
   app: {
-    loading: false
+    loading: false,
+    message: null
   },
   movies: {
     list: {}

@@ -1,6 +1,7 @@
 import CONSTANTS from '../Core/constants'
 import MoviesService from '../Services/movies.service'
 import { debounce } from '../Core/utils'
+import { setMessage } from './app.actions'
 
 export const searchMovies = (query) => {
   return (dispatch) => {
@@ -35,6 +36,8 @@ export const addMovie = (movie) => {
           type: CONSTANTS.EVENT_TYPES.MOVIES.ADD_MOVIE_SUCCESS,
           movie
         })
+
+        dispatch(setMessage('The new movie has been created!'))
       })
       .catch(() => {
         dispatch({
