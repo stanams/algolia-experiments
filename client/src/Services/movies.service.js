@@ -27,9 +27,9 @@ export default class MoviesService extends AbstractService {
     .catch(MoviesService.handleError)
   )
 
-  static searchMovies(query) {
+  static searchMovies(query, page = 0) {
     return new Promise((resolve, reject) => {
-      movieIndex.search(query, function searchDone(err, content) {
+      movieIndex.search({query, page}, function searchDone(err, content) {
         if (err) {
           return reject(err)
         }

@@ -3,13 +3,13 @@ import MoviesService from '../Services/movies.service'
 import { debounce } from '../Core/utils'
 import { setMessage } from './app.actions'
 
-export const searchMovies = (query) => {
+export const searchMovies = (query, page) => {
   return (dispatch) => {
     dispatch({
       type: CONSTANTS.EVENT_TYPES.MOVIES.SEARCH_MOVIES_REQUEST
     })
 
-    MoviesService.searchMovies(query)
+    MoviesService.searchMovies(query, page)
       .then(debounce(movies => {
         dispatch({
           type: CONSTANTS.EVENT_TYPES.MOVIES.SEARCH_MOVIES_SUCCESS,

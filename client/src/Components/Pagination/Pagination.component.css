@@ -1,0 +1,16 @@
+.pagination__list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  justify-content: center; }
+  .pagination__list-item {
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer; }
+    .pagination__list-item:hover {
+      text-decoration: underline; }
+    .pagination__list-item--active {
+      font-weight: 100;
+      color: #42c5e2;
+      cursor: default;
+      text-decoration: none !important; }

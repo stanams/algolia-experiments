@@ -175,4 +175,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
+export { AddMovieForm as PureAddMovieForm };
 export default connect(mapStateToProps, mapDispatchToProps)(AddMovieForm)

@@ -1,11 +1,12 @@
 .form__modal {
   z-index: 10;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
-  left: 0; }
+  left: 0;
+  overflow: auto; }
   .form__modal form {
     margin-bottom: 30px; }
   .form__modal--close-btn {
@@ -19,7 +20,7 @@
     margin-top: 40px; }
   .form__modal--container {
     max-width: 590px;
-    height: 100%;
+    max-height: 25%;
     background-color: white;
     margin: 40px auto;
     padding: 40px;

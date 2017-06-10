@@ -18,5 +18,5 @@ export const SearchBar = ({ query, handleInput }) => {
 
 SearchBar.propTypes = {
   query: PropTypes.string,
-  handleInput: PropTypes.func.isRequired
+  handleInput: PropTypes.func
 }

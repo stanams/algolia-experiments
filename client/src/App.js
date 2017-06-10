@@ -15,22 +15,6 @@ import {
   searchMovies
 } from './Actions/movies.actions'
 
-
-const mapStateToProps = (state, props) => {
-  return {
-    moviesList: state.movies.list,
-    loading: state.app.loading
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    searchMovies(query) {
-      dispatch(searchMovies(query))
-    }
-  }
-}
-
 class App extends Component {
 
   constructor(props) {
@@ -38,7 +22,6 @@ class App extends Component {
     this.state = {
       isFormOpen: false,
       query: ''
-      // meta: {}
     }
     this.openForm = this.openForm.bind(this)
     this.closeForm = this.closeForm.bind(this)
@@ -59,10 +42,6 @@ class App extends Component {
     this.setState({ isFormOpen: false })
   }
 
-  remainPages = () => {
-    return this.state.results.nbPages > this.state.results.page
-  }
-
   render() {
     const { isFormOpen, query } = this.state
     const { loading, moviesList } = this.props
@@ -70,12 +49,12 @@ class App extends Component {
     return (
       <div className="App">
         <Header/>
-        <Message />
+        <Message/>
         <div className="search-container">
           <SearchBar query={ query } handleInput={ this.handleInput } />
           <AddMovieButton openForm={ this.openForm }/>
         </div>
-        <SearchResultsList loading={ loading } results={ moviesList }/>
+        <SearchResultsList searchMovies={ this.props.searchMovies } query={ query } loading={ loading } results={ moviesList }/>
         { isFormOpen &&
           <AddMovieForm closeForm={ this.closeForm }/>
         }
@@ -84,4 +63,20 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = (state, props) => {
+  return {
+    moviesList: state.movies.list,
+    loading: state.app.loading
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    searchMovies(query, page = 0) {
+      dispatch(searchMovies(query, page))
+    }
+  }
+}
+
+export { App as PureApp };
 export default connect(mapStateToProps, mapDispatchToProps)(App)

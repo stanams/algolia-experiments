@@ -6,7 +6,7 @@ import { TextInput } from '../../../../Components/index.components'
 describe('<TextInput />', () => {
   it('renders wihtout crashing', () => {
     const renderedComponent = shallow(
-        <TextInput/>
+        <TextInput inputType=''/>
       );
   })
 });

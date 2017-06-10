@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme';
-import { AddMovieForm } from '../../../Components/index.components'
+import { PureAddMovieForm as AddMovieForm } from '../../../Components/AddMovieForm/AddMovieForm.component'
 
 
 describe('<AddMovieForm />', () => {

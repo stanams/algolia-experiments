@@ -64,3 +64,13 @@ export function errorsObjToString(errors = {}) {
     return errorStr 
   }, '');
 }
+
+export function createArrFromLength(length) {
+  const arr = [];
+  
+  for (let i = 0; i < length; i++) {
+    arr.push(i);
+  }
+
+  return arr;
+}
