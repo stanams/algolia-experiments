@@ -3,7 +3,8 @@ class Api::MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
     if @movie.save
       render json: @movie,
-                   status: 201
+                   status: 201,
+                   serializer: Api::MovieSerializer
     else
       render json: @movie.errors.full_messages
     end
@@ -16,7 +17,6 @@ class Api::MoviesController < ApplicationController
 
   def destroy
     Movie.find(params[:id]).destroy
-    head :ok
   end
 
   private

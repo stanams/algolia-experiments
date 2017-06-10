@@ -43,14 +43,29 @@ export const addMovie = (movie) => {
         dispatch({
           type: CONSTANTS.EVENT_TYPES.MOVIES.ADD_MOVIE_FAILURE
         })
+
+        dispatch(setMessage('Something went wrong with creating your movie, please retry!'))
       })
 
   }
 }
 
-export const DELETE_MOVIE = 'DELETE_MOVIE'
-export const deleteMovie = (movieId) => {
-  return {
-    type: DELETE_MOVIE
+export const deleteMovie = (movieObjectID) => {
+  return (dispatch) => {
+    dispatch({
+      type: CONSTANTS.EVENT_TYPES.MOVIES.DELETE_MOVIE_REQUEST
+    })
+
+     MoviesService.deleteMovie(movieObjectID)
+      .then(() => {
+        dispatch({
+          type: CONSTANTS.EVENT_TYPES.MOVIES.DELETE_MOVIE_SUCCESS
+        })
+      })
+      .catch(() => {
+        dispatch({
+          type: CONSTANTS.EVENT_TYPES.MOVIES.DELETE_MOVIE_FAILURE
+        })
+      })
   }
 }

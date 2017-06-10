@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { SearchResultsListItem } from '../index.components'
+import SearchResultsListItem from '../SearchResultsListItem/SearchResultsListItem.component'
 import './SearchResultsList.component.css'
 
 export const SearchResultsList = ({ results, loading }) => {
@@ -12,7 +12,7 @@ export const SearchResultsList = ({ results, loading }) => {
       <ul className='result-list-container'>
         {
           Array.from(results.hits).map(movie => (
-            <SearchResultsListItem from='result-list' key={movie.objectID} movie={movie}/>     
+            <SearchResultsListItem from='result-list' id={movie.objectID} key={movie.objectID} movie={movie}/>     
           ))
         }
       </ul>

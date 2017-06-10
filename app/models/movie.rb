@@ -14,7 +14,8 @@ class Movie < ApplicationRecord
                :year,
                :image,
                :color,
-               :alternative_titles
+               :alternative_titles,
+               :id
 
     searchableAttributes ['title', 'alternative_titles', 'actors']
     attributesForFaceting [:genre]

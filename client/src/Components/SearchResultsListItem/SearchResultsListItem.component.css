@@ -19,7 +19,12 @@
     flex-direction: row;
     align-items: flex-start;
     min-height: 150px;
-    padding: 40px; }
+    padding: 40px;
+    position: relative; }
+    .list__item--content-light > .icon {
+      position: absolute;
+      top: 45%;
+      right: 5%; }
     .list__item--content-light--image {
       border-radius: 50%;
       height: 70px;

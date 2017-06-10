@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import './AddMovieForm.component.css'
 import { connect } from 'react-redux'
 import { validateState } from '../../Core/utils'
+import SearchResultsListItem from '../SearchResultsListItem/SearchResultsListItem.component'
 
 import {
   Button,
@@ -10,7 +11,6 @@ import {
 } from 'semantic-ui-react'
 
 import {
-  SearchResultsListItem,
   SelectInput,
   TextInput
 } from '../index.components'
@@ -98,7 +98,6 @@ class AddMovieForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state.newMovie)
     const { isValid, validatedState } = validateState(this.state.newMovie, this.state.validation)
 
     if (isValid) {

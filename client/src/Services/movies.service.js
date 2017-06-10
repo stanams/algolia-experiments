@@ -31,11 +31,21 @@ export default class MoviesService extends AbstractService {
     return new Promise((resolve, reject) => {
       movieIndex.search(query, function searchDone(err, content) {
         if (err) {
-          return reject(err);
+          return reject(err)
         }
       
         resolve(content)
       })
     })
+  }
+
+  static deleteMovie(movieObjectID) {
+    return fetch(`${apis.moviesUrl}/${movieObjectID}`, {
+      method: 'DELETE',
+      headers: apis.headers
+    })
+    .then(MoviesService.checkStatus)
+    .then(MoviesService.parseJSON)
+    .catch(MoviesService.handleError)
   }
 }
