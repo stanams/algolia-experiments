@@ -18,7 +18,8 @@
     "react-select": "^1.0.0-rc.5",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
-    "semantic-ui-react": "^0.68.3"
+    "semantic-ui-react": "^0.68.3",
+    "sweetalert-react": "^0.4.10"
   },
   "devDependencies": {
     "enzyme": "^2.8.2",

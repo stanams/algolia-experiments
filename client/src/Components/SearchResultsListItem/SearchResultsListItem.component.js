@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import './SearchResultsListItem.component.css'
 import { truncate } from '../../Core/utils'
 import { connect } from 'react-redux'
+import { Confirmation } from '../Confirmation/Confirmation.component'
 
 import {
   deleteMovie
@@ -20,7 +21,8 @@ class SearchResultsListItem extends React.Component {
     super(props)
     this.state = {
       isOpen: false,
-      isOptimisticallyRemoved: false
+      isOptimisticallyRemoved: false,
+      confirmationAlertIsOpen: false
     }
   }
 
@@ -28,11 +30,21 @@ class SearchResultsListItem extends React.Component {
     this.setState({isOpen: !this.state.isOpen})
   }
 
-  handleDelete = (objectID) => {
+  handleDelete = () => {
     this.props.deleteMovie(this.props.movie.objectID)
     this.setState({isOptimisticallyRemoved: true})
     this.props.setMessage('You\'re movie has been removed!')
     window.scrollTo(0, 0)
+  }
+
+  showConfirmationAlert = (e) => {
+    e.stopPropagation()
+    this.setState({ confirmationAlertIsOpen: true })
+  }
+
+  hideConfirmationAlert = (e) => {
+    e.stopPropagation()
+    this.setState({ confirmationAlertIsOpen: false })
   }
 
   render () {
@@ -52,7 +64,15 @@ class SearchResultsListItem extends React.Component {
             <span>Rating: <Rating rating={ movie.rating } maxRating={5} disabled/></span>
             <span>Genre: { movie.genre }</span>
           </div>
-          {from === 'result-list' && <Icon onClick={ this.handleDelete } name='window close outline' />}
+          {
+            from === 'result-list' &&
+            !this.state.confirmationAlertIsOpen &&
+            <Icon onClick={ e => this.showConfirmationAlert(e) } name='window close outline' />
+          }
+          { this.state.confirmationAlertIsOpen && 
+            <Confirmation hideConfirmationAlert={this.hideConfirmationAlert}
+                          handleDelete={ this.handleDelete }/>
+          }
         </div>
         { isOpen &&
           <div className="list__item--content-full">
