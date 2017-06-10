@@ -1,3 +1,5 @@
+@import '../../_variables.sass'
+
 .search-bar
   position: relative
 
@@ -16,26 +18,41 @@
     text-indent: 20px
     color: #696969
     background-color: transparent
+    
+    @media only screen and #{$phone}
+      width: 100%
 
     &::-webkit-input-placeholder /* Chrome/Opera/Safari */
       color: #D4D4D4
       font-weight: 100
       font-style: italic
 
+      @media only screen and #{$phone}
+        font-size: 18px
+
     &::-moz-placeholder /* Firefox 19+ */
       color: #D4D4D4
       font-weight: 100
       font-style: italic
+
+      @media only screen and #{$phone}
+        font-size: 18px
 
     &:-ms-input-placeholder /* IE 10+ */
       color: #D4D4D4
       font-weight: 100
       font-style: italic
 
+      @media only screen and #{$phone}
+        font-size: 18px
+
     &:-moz-placeholder /* Firefox 18- */
       color: #D4D4D4
       font-weight: 100
       font-style: italic
+
+      @media only screen and #{$phone}
+        font-size: 18px
 
     &:focus
       outline: 0

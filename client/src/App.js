@@ -9,6 +9,7 @@ import {
 import AddMovieForm from './Components/AddMovieForm/AddMovieForm.component'
 import Message from './Components/Message/Message.component'
 
+import './_variables.sass'
 import { connect } from 'react-redux'
 
 import {

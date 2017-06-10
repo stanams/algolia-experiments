@@ -3,6 +3,10 @@
   flex-direction: row;
   list-style: none;
   justify-content: center; }
+  @media only screen and (max-width: 549px) {
+    .pagination__list {
+      margin: 0;
+      padding: 0; } }
   .pagination__list-item {
     margin-left: 5px;
     margin-right: 5px;

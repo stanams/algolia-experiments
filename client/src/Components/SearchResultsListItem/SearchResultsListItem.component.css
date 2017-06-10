@@ -25,11 +25,18 @@
       position: absolute;
       top: 45%;
       right: 5%; }
+      @media only screen and (max-width: 549px) {
+        .list__item--content-light > .icon {
+          top: 7%; } }
     .list__item--content-light--image {
       border-radius: 50%;
       height: 70px;
       width: 70px;
       margin-right: 20px; }
+      @media only screen and (max-width: 549px) {
+        .list__item--content-light--image {
+          height: 40px;
+          width: 40px; } }
     .list__item--content-light .item--text {
       display: flex;
       flex-direction: column;
@@ -39,6 +46,9 @@
       .list__item--content-light .item--text--title {
         font-size: 30px;
         margin-bottom: 15px; }
+        @media only screen and (max-width: 549px) {
+          .list__item--content-light .item--text--title {
+            font-size: 18px; } }
   .list__item--content-full {
     display: flex;
     flex-direction: column;

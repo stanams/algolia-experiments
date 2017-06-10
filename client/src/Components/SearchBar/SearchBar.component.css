@@ -14,21 +14,36 @@
     text-indent: 20px;
     color: #696969;
     background-color: transparent; }
+    @media only screen and (max-width: 549px) {
+      .search-bar-input {
+        width: 100%; } }
     .search-bar-input::-webkit-input-placeholder {
       color: #D4D4D4;
       font-weight: 100;
       font-style: italic; }
+      @media only screen and (max-width: 549px) {
+        .search-bar-input::-webkit-input-placeholder {
+          font-size: 18px; } }
     .search-bar-input::-moz-placeholder {
       color: #D4D4D4;
       font-weight: 100;
       font-style: italic; }
+      @media only screen and (max-width: 549px) {
+        .search-bar-input::-moz-placeholder {
+          font-size: 18px; } }
     .search-bar-input:-ms-input-placeholder {
       color: #D4D4D4;
       font-weight: 100;
       font-style: italic; }
+      @media only screen and (max-width: 549px) {
+        .search-bar-input:-ms-input-placeholder {
+          font-size: 18px; } }
     .search-bar-input:-moz-placeholder {
       color: #D4D4D4;
       font-weight: 100;
       font-style: italic; }
+      @media only screen and (max-width: 549px) {
+        .search-bar-input:-moz-placeholder {
+          font-size: 18px; } }
     .search-bar-input:focus {
       outline: 0; }

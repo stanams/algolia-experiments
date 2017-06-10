@@ -1,9 +1,16 @@
+@import '../../_variables.sass'
+
 .btn--semantic-ui
   margin-left: 10px !important
   border-radius: 30px !important
   width: 100px
   height: 60px
   background-color: #42c5e2 !important
+
+  @media only screen and #{$phone}
+    margin-top: 5px !important
+    margin-bottom: 5px !important
+    width: 200px
 
   i
     font-size: 2em !important

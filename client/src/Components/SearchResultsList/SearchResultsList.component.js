@@ -7,7 +7,8 @@ import { Pagination } from '../Pagination/Pagination.component'
 export const SearchResultsList = ({ results, loading, query, searchMovies }) => {
   return (
     <div>
-      { (results.hits && !loading) && 
+      {
+        (results.hits && !loading) && 
         <Pagination active={results.page} 
                     from={results.page < 4 ? 0 : results.page - 4}
                     to={results.page < 4 ? 9 : results.page + 4}
@@ -25,7 +26,8 @@ export const SearchResultsList = ({ results, loading, query, searchMovies }) => 
         }
       </ul>
       }
-      { (results.hits && !loading) && 
+      {
+        (results.hits && !loading) && 
         
         <Pagination active={results.page} 
                     from={results.page < 4 ? 0 : results.page - 4}
