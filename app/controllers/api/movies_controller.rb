@@ -2,7 +2,8 @@ class Api::MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      render json: @movie
+      render json: @movie,
+                   status: 201
     else
       render json: @movie.errors.full_messages
     end
