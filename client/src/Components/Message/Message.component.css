@@ -2,3 +2,6 @@
   width: 50%;
   margin-left: auto;
   margin-right: auto; }
+  @media only screen and (max-width: 549px) {
+    .ui.message {
+      width: 90%; } }

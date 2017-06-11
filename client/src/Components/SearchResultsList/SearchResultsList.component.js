@@ -9,7 +9,8 @@ export const SearchResultsList = ({ results, loading, query, searchMovies }) => 
     <div>
       {
         (results.hits && !loading) && 
-        <Pagination active={ results.page } 
+        <Pagination nbHits={ results.nbHits }
+                    active={ results.page } 
                     from={ results.page < 4 ? 0 : results.page - 4 }
                     to={ results.page < 4 ? 9 : results.page + 4 }
                     onClick={ page => searchMovies(query, page) }
@@ -29,7 +30,8 @@ export const SearchResultsList = ({ results, loading, query, searchMovies }) => 
       {
         (results.hits && !loading) && 
         
-        <Pagination active={ results.page } 
+        <Pagination nbHits={ results.nbHits }
+                    active={ results.page } 
                     from={ results.page < 4 ? 0 : results.page - 4 }
                     to={ results.page < 4 ? 9 : results.page + 4 }
                     onClick={ page => searchMovies(query, page) } 

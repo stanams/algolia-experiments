@@ -22,7 +22,7 @@ class SearchResultsListItem extends React.Component {
     this.state = {
       isOpen: false,
       isOptimisticallyRemoved: false,
-      confirmationAlertIsOpen: false
+      confirmationMessageIsOpen: false
     }
   }
 
@@ -37,14 +37,14 @@ class SearchResultsListItem extends React.Component {
     window.scrollTo(0, 0)
   }
 
-  showConfirmationAlert = (e) => {
+  showConfirmationMessage = (e) => {
     e.stopPropagation()
-    this.setState({ confirmationAlertIsOpen: true })
+    this.setState({ confirmationMessageIsOpen: true })
   }
 
-  hideConfirmationAlert = (e) => {
+  hideConfirmationMessage = (e) => {
     e.stopPropagation()
-    this.setState({ confirmationAlertIsOpen: false })
+    this.setState({ confirmationMessageIsOpen: false })
   }
 
   render () {
@@ -66,11 +66,11 @@ class SearchResultsListItem extends React.Component {
           </div>
           {
             from === 'result-list' &&
-            !this.state.confirmationAlertIsOpen &&
-            <Icon onClick={ e => this.showConfirmationAlert(e) } name='window close outline' />
+            !this.state.confirmationMessageIsOpen &&
+            <Icon onClick={ e => this.showConfirmationMessage(e) } name='window close outline' />
           }
-          { this.state.confirmationAlertIsOpen && 
-            <Confirmation hideConfirmationAlert={this.hideConfirmationAlert}
+          { this.state.confirmationMessageIsOpen && 
+            <Confirmation hideConfirmationMessage={this.hideConfirmationMessage}
                           handleDelete={ this.handleDelete }/>
           }
         </div>
@@ -102,4 +102,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
+export { SearchResultsListItem as PureSearchResultsListItem }
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResultsListItem)

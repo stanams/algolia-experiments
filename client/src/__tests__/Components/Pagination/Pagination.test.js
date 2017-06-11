@@ -16,7 +16,7 @@ describe('Pagination', () => {
     expect(activeItem.hasClass('pagination__list-item--active')).toBe(true)
   })
 
-  it('should call "onClick" method with the clicked item', () => {
+  it('should call onClick method with the clicked item', () => {
     const onClick = jest.fn()
     const pagination = shallow(<Pagination onClick={onClick} from={1} to={10} active={5} />)
     const itemToBeClicked = pagination.find('.pagination__list-item').at(3) // item 4

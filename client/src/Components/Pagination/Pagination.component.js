@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import './Pagination.component.css'
 import { createArrFromLength } from '../../Core/utils'
 
-export const Pagination = ({ from, to, active, onClick }) => {
+export const Pagination = ({ from, to, active, onClick, nbHits }) => {
   return (
     <ul className='pagination__list'>
       {
@@ -12,7 +12,7 @@ export const Pagination = ({ from, to, active, onClick }) => {
               key={item}
               onClick={active === from + item ? () => null : () => onClick(item + from)}
               >
-            { from + item }
+            { nbHits > to && from + item }
           </li>
         ))
       }

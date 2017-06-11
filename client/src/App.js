@@ -79,5 +79,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export { App as PureApp };
+export { App as PureApp }
 export default connect(mapStateToProps, mapDispatchToProps)(App)
