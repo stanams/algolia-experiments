@@ -132,7 +132,7 @@ class AddMovieForm extends React.Component {
                        onChange={ (e, inputName) => this.handleInputChange(e, 'alternative_titles') }
                        errors={ this.state.validation.alternative_titles.errors }
                        value={ alternative_titles }
-                       inputType='Alternative Titles' />
+                       inputType='Alternative Titles'/>
             <TextInput className='form__element-actors'
                        onChange={ (e, inputName) => this.handleInputChange(e, 'actors') }
                        errors={ this.state.validation.actors.errors }

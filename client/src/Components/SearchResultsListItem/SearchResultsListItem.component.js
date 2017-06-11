@@ -53,7 +53,6 @@ class SearchResultsListItem extends React.Component {
     const classnames = classNames('list__item', {
       'full-content': isOpen
     })
-    console.log()
 
     return (
       !this.state.isOptimisticallyRemoved &&
@@ -62,8 +61,8 @@ class SearchResultsListItem extends React.Component {
           <img className='list__item--content-light--image' src={ movie.image } alt=""/>
           <div className="item--text">
             <span className="item--text--title">{ truncate(movie.title, 50) }</span>
-            <span>Rating: <Rating rating={ movie.rating } maxRating={5} disabled/></span>
-            <span>Genre: { from === 'result-list' ? movie.genre.replace(/"|\[|]/g,'') : movie.genre }</span>
+            <span><strong>Rating</strong>: <Rating rating={ movie.rating } maxRating={5} disabled/></span>
+            <span><strong>Genre</strong>: { from === 'result-list' ? movie.genre.replace(/"|\[|]/g,'') : movie.genre }</span>
           </div>
           {
             from === 'result-list' &&
@@ -77,9 +76,9 @@ class SearchResultsListItem extends React.Component {
         </div>
         { isOpen &&
           <div className="list__item--content-full">
-            <div className='item-year'>Year: { movie.year }</div>
-            <div className='item-actors'>Actors: { from === 'result-list' ? movie.actors.replace(/"|\[|]/g,'') : movie.actors }</div>
-            <div className='item-alternative-titles'>Alternative Titles: { from === 'result-list' ? movie.alternative_titles.replace(/"|\[|]/g,'') : movie.alternative_titles }</div>
+            <div className='item-year'><strong>Year</strong>: { movie.year }</div>
+            <div className='item-actors'><strong>Actors</strong>: { from === 'result-list' ? movie.actors.replace(/"|\[|]/g,'') : movie.actors }</div>
+            <div className='item-alternative-titles'><strong>Alternative Titles</strong>: { from === 'result-list' ? movie.alternative_titles.replace(/"|\[|]/g,'') : movie.alternative_titles }</div>
           </div>
         }
       </div>

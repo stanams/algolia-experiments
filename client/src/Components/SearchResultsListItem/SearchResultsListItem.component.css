@@ -66,3 +66,5 @@
   .list__item .full-content {
     min-height: 380px;
     padding: 30px 0; }
+  .list__item strong {
+    color: gray; }
