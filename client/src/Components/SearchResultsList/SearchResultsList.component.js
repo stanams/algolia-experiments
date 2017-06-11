@@ -9,10 +9,10 @@ export const SearchResultsList = ({ results, loading, query, searchMovies }) => 
     <div>
       {
         (results.hits && !loading) && 
-        <Pagination active={results.page} 
-                    from={results.page < 4 ? 0 : results.page - 4}
-                    to={results.page < 4 ? 9 : results.page + 4}
-                    onClick={page => searchMovies(query, page)} 
+        <Pagination active={ results.page } 
+                    from={ results.page < 4 ? 0 : results.page - 4 }
+                    to={ results.page < 4 ? 9 : results.page + 4 }
+                    onClick={ page => searchMovies(query, page) }
         />
       }
       <h3 className='loading__element'>{ loading ? 'Loading...' : '' }</h3>
@@ -21,7 +21,7 @@ export const SearchResultsList = ({ results, loading, query, searchMovies }) => 
       <ul className='result-list-container'>
         {
           Array.from(results.hits).map(movie => (
-            <SearchResultsListItem from='result-list' id={movie.objectID} key={movie.objectID} movie={movie}/>     
+            <SearchResultsListItem from='result-list' id={ movie.objectID } key={ movie.objectID } movie={ movie }/>     
           ))
         }
       </ul>
@@ -29,10 +29,10 @@ export const SearchResultsList = ({ results, loading, query, searchMovies }) => 
       {
         (results.hits && !loading) && 
         
-        <Pagination active={results.page} 
-                    from={results.page < 4 ? 0 : results.page - 4}
-                    to={results.page < 4 ? 9 : results.page + 4}
-                    onClick={page => searchMovies(query, page)} 
+        <Pagination active={ results.page } 
+                    from={ results.page < 4 ? 0 : results.page - 4 }
+                    to={ results.page < 4 ? 9 : results.page + 4 }
+                    onClick={ page => searchMovies(query, page) } 
         />
       }
     </div>

@@ -53,6 +53,7 @@ class SearchResultsListItem extends React.Component {
     const classnames = classNames('list__item', {
       'full-content': isOpen
     })
+    console.log()
 
     return (
       !this.state.isOptimisticallyRemoved &&
@@ -62,7 +63,7 @@ class SearchResultsListItem extends React.Component {
           <div className="item--text">
             <span className="item--text--title">{ truncate(movie.title, 50) }</span>
             <span>Rating: <Rating rating={ movie.rating } maxRating={5} disabled/></span>
-            <span>Genre: { from === 'result-list' ? JSON.parse(movie.genre).join(', ') : movie.genre }</span>
+            <span>Genre: { from === 'result-list' ? movie.genre.replace(/"|\[|]/g,'') : movie.genre }</span>
           </div>
           {
             from === 'result-list' &&
@@ -77,8 +78,8 @@ class SearchResultsListItem extends React.Component {
         { isOpen &&
           <div className="list__item--content-full">
             <div className='item-year'>Year: { movie.year }</div>
-            <div className='item-actors'>Actors: { from === 'result-list' ? JSON.parse(movie.actors).join(', ') : movie.actors }</div>
-            <div className='item-link'>Watch it on Netflix</div>
+            <div className='item-actors'>Actors: { from === 'result-list' ? movie.actors.replace(/"|\[|]/g,'') : movie.actors }</div>
+            <div className='item-alternative-titles'>Alternative Titles: { from === 'result-list' ? movie.alternative_titles.replace(/"|\[|]/g,'') : movie.alternative_titles }</div>
           </div>
         }
       </div>
