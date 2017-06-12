@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './AddMovieForm.component.css'
 import { connect } from 'react-redux'
 import { validateState } from '../../Core/utils'
 import SearchResultsListItem from '../SearchResultsListItem/SearchResultsListItem.component'
+import './AddMovieForm.component.css'
 
 import {
   Button,
@@ -38,12 +38,6 @@ class AddMovieForm extends React.Component {
           rules: {
             required: true
           }  
-        },
-        alternative_titles: {
-          rules: {
-            arr: true,
-            required: true
-          }
         },
         year: {
           rules: {
@@ -130,7 +124,6 @@ class AddMovieForm extends React.Component {
                          handleSelectYearChange={ this.handleSelectYearChange } />
             <TextInput className='form__element-alternative-titles'
                        onChange={ (e, inputName) => this.handleInputChange(e, 'alternative_titles') }
-                       errors={ this.state.validation.alternative_titles.errors }
                        value={ alternative_titles }
                        inputType='Alternative Titles'/>
             <TextInput className='form__element-actors'

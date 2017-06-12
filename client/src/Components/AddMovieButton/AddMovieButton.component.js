@@ -1,9 +1,10 @@
 import React from 'react'
-import './AddMovieButton.component.css'
+import PropTypes from 'prop-types'
 import {
   Button,
   Icon
 } from 'semantic-ui-react'
+import './AddMovieButton.component.css'
 
 export const AddMovieButton = ({ openForm }) => (
     <div onClick={ openForm }>
@@ -15,3 +16,7 @@ export const AddMovieButton = ({ openForm }) => (
       </Button>
     </div>
 )   
+
+AddMovieButton.propTypes = {
+  openForm: PropTypes.func
+}

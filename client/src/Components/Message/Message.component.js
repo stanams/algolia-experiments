@@ -1,6 +1,6 @@
 import React from 'react'
-import { Message as SMessage } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import { Message as SMessage } from 'semantic-ui-react'
 import { resetMessage } from '../../Actions/app.actions'
 import './Message.component.css'
 
@@ -9,7 +9,7 @@ const Message = (props) => {
     (props.message && !props.message.includes('wrong') &&
       <SMessage
         success
-        onDismiss={props.resetMessage} 
+        onDismiss={ props.resetMessage } 
         header="Congratulations!"
         content={ props.message }
       />)
@@ -17,7 +17,7 @@ const Message = (props) => {
     (props.message && props.message.includes('wrong') &&
       <SMessage
         error
-        onDismiss={props.resetMessage} 
+        onDismiss={ props.resetMessage }
         header="Ooops"
         content={ props.message }
       />)

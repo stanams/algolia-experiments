@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './Confirmation.component.css'
 
 export const Confirmation = ({ hideConfirmationMessage, handleDelete }) => {
@@ -11,4 +12,9 @@ export const Confirmation = ({ hideConfirmationMessage, handleDelete }) => {
       </div>
     </div>
   )
+}
+
+Confirmation.propTypes = {
+  hideConfirmationMessage: PropTypes.func,
+  handleDelete: PropTypes.func
 }

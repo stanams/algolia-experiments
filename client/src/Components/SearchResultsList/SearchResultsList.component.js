@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SearchResultsListItem from '../SearchResultsListItem/SearchResultsListItem.component'
-import './SearchResultsList.component.css'
 import { Pagination } from '../Pagination/Pagination.component'
+import './SearchResultsList.component.css'
 
 export const SearchResultsList = ({ results, loading, query, searchMovies }) => {
   return (
@@ -42,5 +42,8 @@ export const SearchResultsList = ({ results, loading, query, searchMovies }) => 
 }
 
 SearchResultsList.propTypes = {
-  results: PropTypes.object
+  results: PropTypes.object,
+  loading: PropTypes.bool,
+  query: PropTypes.string,
+  searchMovies: PropTypes.func
 }

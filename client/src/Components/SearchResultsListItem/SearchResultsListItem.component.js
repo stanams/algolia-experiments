@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import './SearchResultsListItem.component.css'
 import { truncate } from '../../Core/utils'
 import { connect } from 'react-redux'
-import { Confirmation } from '../Confirmation/Confirmation.component'
+import { Confirmation } from '../index.components'
 
 import {
   deleteMovie
@@ -76,9 +76,15 @@ class SearchResultsListItem extends React.Component {
         </div>
         { isOpen &&
           <div className="list__item--content-full">
-            <div className='item-year'><strong>Year</strong>: { movie.year }</div>
-            <div className='item-actors'><strong>Actors</strong>: { from === 'result-list' ? movie.actors.replace(/"|\[|]/g,'') : movie.actors }</div>
-            <div className='item-alternative-titles'><strong>Alternative Titles</strong>: { from === 'result-list' ? movie.alternative_titles.replace(/"|\[|]/g,'') : movie.alternative_titles }</div>
+            <div className='item-year'>
+              <strong>Year</strong>: { movie.year }
+            </div>
+            <div className='item-actors'>
+              <strong>Actors</strong>: { from === 'result-list' ? movie.actors.replace(/"|\[|]/g,'') : movie.actors }
+            </div>
+            <div className='item-alternative-titles'>
+              <strong>Alternative Titles</strong>: { from === 'result-list' ? movie.alternative_titles.replace(/"|\[|]/g,'') : movie.alternative_titles }
+            </div>
           </div>
         }
       </div>

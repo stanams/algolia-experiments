@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Pagination.component.css'
 import { createArrFromLength } from '../../Core/utils'
+import './Pagination.component.css'
 
 export const Pagination = ({ from, to, active, onClick, nbHits }) => {
   return (
@@ -10,8 +10,7 @@ export const Pagination = ({ from, to, active, onClick, nbHits }) => {
         createArrFromLength(to - from + 1).map(item => (
           <li className={'pagination__list-item ' + (active === from + item ? 'pagination__list-item--active': '')}
               key={item}
-              onClick={active === from + item ? () => null : () => onClick(item + from)}
-              >
+              onClick={active === from + item ? () => null : () => onClick(item + from)}>
             { nbHits > to && from + item }
           </li>
         ))
@@ -24,5 +23,6 @@ Pagination.propTypes = {
   from: PropTypes.number,
   to: PropTypes.number,
   active: PropTypes.number,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  nbHits: PropTypes.number
 }

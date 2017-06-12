@@ -42,7 +42,6 @@ export function validateState(state, validation) {
         const isArr = validation[key].rules.arr;
 
         if ((isArr && value.length === 0) || (!isArr && !value)) {
-          // TODO: use lodash to imutably set the errors
           validation[key].errors.required = 'This field is required';
           isValid = false;
         }
