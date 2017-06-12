@@ -10,11 +10,6 @@ class Api::MoviesController < ApplicationController
     end
   end
 
-  def index
-    movies = Movie.first(10)
-    render json: movies
-  end
-
   def destroy
     Movie.find(params[:id]).destroy
   end
