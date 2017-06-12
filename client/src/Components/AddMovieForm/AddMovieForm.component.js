@@ -106,8 +106,8 @@ class AddMovieForm extends React.Component {
     const { title, alternative_titles, year, image, actors, genre, rating } = this.state.newMovie
     return (
       <div className='form__modal'>
-        <div className='form__modal--container'>
-          <span className='form__modal--close-btn' onClick={ this.props.closeForm }>
+        <div className='form__modal-container'>
+          <span className='form__modal-close-btn' onClick={ this.props.closeForm }>
             <i className="fa fa-times fa-3" aria-hidden="true"></i>
           </span>
           <h1 htmlFor="movie-form">Add a new movie</h1>

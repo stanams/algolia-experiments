@@ -9,7 +9,7 @@
   overflow: auto; }
   .form__modal form {
     margin-bottom: 30px; }
-  .form__modal--close-btn {
+  .form__modal-close-btn {
     cursor: pointer;
     position: absolute;
     top: -18px;
@@ -18,7 +18,7 @@
     width: 50px;
     float: right;
     margin-top: 40px; }
-  .form__modal--container {
+  .form__modal-container {
     max-width: 590px;
     background-color: white;
     margin: 40px auto;
@@ -28,38 +28,38 @@
     -moz-box-shadow: 1px 2px 39px -2px #8f8f8f;
     box-shadow: 1px 2px 39px -2px #8f8f8f;
     position: relative; }
-    .form__modal--container .form__element {
+    .form__modal-container .form__element {
       display: grid;
       grid-template-columns: 45% 45%;
       grid-template-rows: 100px;
       grid-column-gap: 10%; }
       @media only screen and (max-width: 549px) {
-        .form__modal--container .form__element {
+        .form__modal-container .form__element {
           display: flex;
           flex-direction: column; } }
-      .form__modal--container .form__element-btn {
+      .form__modal-container .form__element-btn {
         grid-column-start: 1;
         grid-column-end: 3;
         color: white;
         background-color: #42c5e2; }
-        .form__modal--container .form__element-btn:active {
+        .form__modal-container .form__element-btn:active {
           background-color: #42c5e2;
           color: white; }
-        .form__modal--container .form__element-btn:focus {
+        .form__modal-container .form__element-btn:focus {
           background-color: #42c5e2;
           color: white; }
-        .form__modal--container .form__element-btn:hover {
+        .form__modal-container .form__element-btn:hover {
           background-color: #6ccbe0;
           color: white; }
-      .form__modal--container .form__element-rating {
+      .form__modal-container .form__element-rating {
         justify-self: center;
         align-self: center;
         grid-column-start: 1;
         grid-column-end: 3;
         margin: 20px; }
-        .form__modal--container .form__element-rating .icon {
+        .form__modal-container .form__element-rating .icon {
           outline: none; }
-      .form__modal--container .form__element-year {
+      .form__modal-container .form__element-year {
         width: 30px;
         margin-top: 8px; }
   .form__modal-movie-preview-title {

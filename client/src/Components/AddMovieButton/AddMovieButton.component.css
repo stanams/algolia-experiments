@@ -1,14 +1,14 @@
-.btn--semantic-ui {
+.btn-semantic-ui {
   margin-left: 10px !important;
   border-radius: 30px !important;
   width: 100px;
   height: 60px;
   background-color: #42c5e2 !important; }
   @media only screen and (max-width: 549px) {
-    .btn--semantic-ui {
+    .btn-semantic-ui {
       margin-top: 5px !important;
       margin-bottom: 5px !important;
       width: 200px; } }
-  .btn--semantic-ui i {
+  .btn-semantic-ui i {
     font-size: 2em !important;
     padding-top: 7px !important; }
