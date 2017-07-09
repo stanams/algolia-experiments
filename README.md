@@ -9,7 +9,7 @@ To run the app:
 - download this repo or do `git clone https://github.com/stanams/algolia-experiments.git`
 - to install back and front dependencies and run the server:
 ```sh
-$ cd movilia
+$ cd algolia-experiments
 $ bundle install
 $ cd client
 $ npm install
@@ -19,7 +19,7 @@ $ foreman start
 
 You should see a window open at localhost:5000. If you don't, just manually go to [http://localhost:5000](http://localhost:5000)
 
-To run the tests, just go to _movilia/client_ and run:
+To run the tests, just go to _algolia-experiments/client_ and run:
 ```sh
 $ npm test
 $ a
